@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính chỉ số BMI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f6fc;
+            margin: 0;
+            color: #222;
+        }
+
+        nav {
+            background: #1769aa;
+            padding: 18px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 8px 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 35px auto;
+            padding: 28px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000015;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1769aa;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: 2px solid #90caf9;
+            border-color: #1769aa;
+        }
+
+        .loi {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 22px;
+            background: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0d4778;
+        }
+
+        .ket-qua {
+            margin-top: 22px;
+            padding: 18px;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .xanh {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+        }
+
+        .vang {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+        }
+
+        .do {
+            background: #f8d7da;
+            border: 1px solid #dc3545;
+            color: #721c24;
+        }
+
+        .ghi-chu {
+            margin-top: 18px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Trang chủ</a>
+        <a href="/may-tinh">Bài 1: Máy tính</a>
+        <a href="/tinh-diem">Bài 2: Tính điểm</a>
+        <a href="/bmi">Bài 3: Tính BMI</a>
+    </nav>
+
+    <div class="container">
+        <h1>Tính chỉ số BMI</h1>
+
+        <p>Nhập chiều cao và cân nặng của bạn.</p>
+
+        <form method="POST">
+            <label for="chieu_cao">Chiều cao (cm):</label>
+
+            <input
+                type="text"
+                id="chieu_cao"
+                name="chieu_cao"
+                placeholder="Ví dụ: 170 hoặc 170,5"
+                value="{{ chieu_cao }}"
+                required
+            >
+
+            {% if loi_chieu_cao %}
+                <div class="loi">{{ loi_chieu_cao }}</div>
+            {% endif %}
+
+            <label for="can_nang">Cân nặng (kg):</label>
+
+            <input
+                type="text"
+                id="can_nang"
+                name="can_nang"
+                placeholder="Ví dụ: 65 hoặc 65,5"
+                value="{{ can_nang }}"
+                required
+            >
+
+            {% if loi_can_nang %}
+                <div class="loi">{{ loi_can_nang }}</div>
+            {% endif %}
+
+            <button type="submit">Tính BMI</button>
+        </form>
+
+        {% if bmi is not none %}
+            <div class="ket-qua {{ mau_ket_qua }}">
+                <strong>Chỉ số BMI:</strong>
+                {{ "%.1f"|format(bmi) }}
+                <br>
+
+                <strong>Phân loại:</strong>
+                {{ phan_loai }}
+
+                {% if can_nang_chuan %}
+                    <br>
+                    <strong>Cân nặng tham khảo:</strong>
+                    {{ "%.1f"|format(can_nang_chuan[0]) }}
+                    – {{ "%.1f"|format(can_nang_chuan[1]) }} kg
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="ghi-chu">
+            <strong>Công thức:</strong>
+            BMI = cân nặng (kg) / chiều cao (m)².
+            <br>
+
+            <strong>Giới hạn hợp lệ:</strong>
+            chiều cao từ 50 đến 250 cm, cân nặng từ 10 đến 300 kg.
+            <br>
+
+            <strong>Phân loại theo chuẩn người châu Á:</strong>
+            <ul>
+                <li>BMI dưới 18,5: Thiếu cân.</li>
+                <li>BMI từ 18,5 đến dưới 23: Bình thường.</li>
+                <li>BMI từ 23 đến dưới 25: Thừa cân.</li>
+                <li>BMI từ 25 trở lên: Béo phì.</li>
+            </ul>
+
+            Cân nặng tham khảo tương ứng với BMI từ 18,5 đến 22,9.
+        </div>
+    </div>
+</body>
+</html>

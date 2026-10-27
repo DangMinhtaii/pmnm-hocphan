@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website bai tap Python</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f6fc;
+            margin: 0;
+            color: #222;
+        }
+
+        nav {
+            background: #1769aa;
+            padding: 18px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 8px 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 45px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .danh-sach {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .the {
+            background: white;
+            width: 290px;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000015;
+        }
+
+        .the h2 {
+            color: #1769aa;
+        }
+
+        .nut {
+            display: inline-block;
+            background: #1769aa;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .nut:hover {
+            background: #0d4778;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Trang chủ</a>
+        <a href="/may-tinh">Bài 1: Máy tính</a>
+        <a href="/tinh-diem">Bài 2: Tính điểm</a>
+        <a href="/bmi">Bài 3: Tính BMI</a>
+    </nav>
+
+    <div class="container">
+        <h1>Hệ thống tiện ích thông minh</h1>
+        <p>Lựa chọn chức năng bạn cần và bắt đầu trải nghiệm.</p>
+
+        <div class="danh-sach">
+            <div class="the">
+                <h2>Bài 1: Máy tính</h2>
+                <p>Thực hiện phép cộng, trừ, nhân và chia hai số.</p>
+                <a class="nut" href="/may-tinh">Mở máy tính</a>
+            </div>
+
+            <div class="the">
+                <h2>Bài 2: Tính điểm</h2>
+                <p>Tính điểm trung bình và xếp loại học phần.</p>
+                <a class="nut" href="/tinh-diem">Mở tính điểm</a>
+            </div>
+
+            <div class="the">
+                <h2>Bài 3: Tính BMI</h2>
+                <p>Tính chỉ số BMI theo chiều cao và cân nặng.</p>
+                <a class="nut" href="/bmi">Mở tính BMI</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
